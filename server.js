@@ -44,8 +44,10 @@ app.post('/api/chat', async (req, res) => {
     }
 
     // Generate response using Gemini
-    const model = ai.getGenerativeModel({ model: GEMINI_MODEL });
-    const result = await model.generateContent(message);
+    const result = await ai.models.generateContent({
+      model: GEMINI_MODEL,
+      contents: [{ parts: [{ text: message }] }]
+    });
     const text = extractText(result);
 
     res.json({ response: text });
