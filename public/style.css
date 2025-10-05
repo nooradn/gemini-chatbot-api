@@ -63,13 +63,13 @@ body {
   color: #6b7280;
 }
 
-.model-info, .api-key-info {
+.model-info {
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.model-info i, .api-key-info i {
+.model-info i {
   font-size: 10px;
   color: #0d9488;
 }

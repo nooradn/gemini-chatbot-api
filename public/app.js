@@ -23,14 +23,14 @@ form.addEventListener('submit', async function (e) {
 
   appendMessage('user', userMessage);
   input.value = '';
-  
+
   // Disable form while processing
   sendButton.disabled = true;
   input.disabled = true;
 
   // Show typing indicator
   const typingIndicator = showTypingIndicator();
-  
+
   try {
     const response = await fetch('/api/chat', {
       method: 'POST',
@@ -41,10 +41,10 @@ form.addEventListener('submit', async function (e) {
     });
 
     const data = await response.json();
-    
+
     // Remove typing indicator
     hideTypingIndicator(typingIndicator);
-    
+
     if (response.ok) {
       appendMessage('bot', data.response || data.text);
     } else {
@@ -76,7 +76,7 @@ function appendMessage(sender, text) {
 
   const messageContent = document.createElement('div');
   messageContent.classList.add('message', sender);
-  
+
   const messageText = document.createElement('div');
   messageText.textContent = text;
   messageContent.appendChild(messageText);
@@ -88,10 +88,10 @@ function appendMessage(sender, text) {
 
   messageWrapper.appendChild(messageContent);
   chatMessages.appendChild(messageWrapper);
-  
+
   // Scroll to bottom
   chatMessages.scrollTop = chatMessages.scrollHeight;
-  
+
   return messageWrapper;
 }
 
@@ -106,26 +106,26 @@ function showTypingIndicator() {
 
   const typingIndicator = document.createElement('div');
   typingIndicator.classList.add('typing-indicator');
-  
+
   const typingText = document.createElement('span');
   typingText.textContent = 'Gemini is typing';
-  
+
   const typingDots = document.createElement('div');
   typingDots.classList.add('typing-dots');
-  
+
   for (let i = 0; i < 3; i++) {
     const dot = document.createElement('div');
     dot.classList.add('typing-dot');
     typingDots.appendChild(dot);
   }
-  
+
   typingIndicator.appendChild(typingText);
   typingIndicator.appendChild(typingDots);
   messageWrapper.appendChild(typingIndicator);
-  
+
   chatMessages.appendChild(messageWrapper);
   chatMessages.scrollTop = chatMessages.scrollHeight;
-  
+
   return messageWrapper;
 }
 
@@ -151,9 +151,8 @@ async function loadApiInfo() {
   try {
     const response = await fetch('/api/info');
     const data = await response.json();
-    
+
     document.getElementById('model-name').textContent = data.model;
-    document.getElementById('api-key-display').textContent = data.apiKey;
   } catch (error) {
     console.error('Failed to load API info:', error);
   }
