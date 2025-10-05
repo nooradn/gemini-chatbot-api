@@ -10,7 +10,7 @@ A modern web-based chatbot powered by Google's Gemini AI API.
 - Real-time chat with Gemini AI
 - Teal color theme
 - Responsive design
-- API information display
+- Model information display
 
 ## Quick Start
 
