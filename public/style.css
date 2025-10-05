@@ -36,7 +36,7 @@ body {
   width: 100%;
 }
 
-.header-content > div:first-child {
+.header-left {
   display: flex;
   align-items: center;
   gap: 12px;

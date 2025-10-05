@@ -1,15 +1,19 @@
 # Gemini AI Chatbot
 
-A simple web-based chatbot powered by Google's Gemini AI API.
+A modern, professional web-based chatbot powered by Google's Gemini AI API with a clean, structured codebase.
 
-## Features
+## ✨ Features
 
-- Clean, responsive web interface
-- Real-time chat with Gemini AI
-- Express.js backend server
-- Environment-based configuration
+- 🎨 Modern messaging interface (Telegram/WhatsApp style)
+- 🤖 Real-time chat with Gemini AI
+- 🎯 Teal color theme without gradients
+- 📱 Fully responsive design
+- ⚡ Fast and lightweight
+- 🔧 Well-structured, maintainable code
+- 🛡️ Error handling and validation
+- 📊 API information display
 
-## Setup
+## 🚀 Quick Start
 
 1. **Install dependencies:**
    ```bash
@@ -17,11 +21,10 @@ A simple web-based chatbot powered by Google's Gemini AI API.
    ```
 
 2. **Configure environment:**
-   - Make sure your `.env` file contains your Gemini API key:
+   - Your `.env` file is already configured with the API key
    ```
    GEMINI_API_KEY=your_api_key_here
    ```
-   (Your API key is already configured)
 
 3. **Run the application:**
    ```bash
@@ -31,27 +34,102 @@ A simple web-based chatbot powered by Google's Gemini AI API.
 4. **Open your browser:**
    - Navigate to `http://localhost:3000`
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 gemini-chatbot-api/
-├── server.js          # Express server with Gemini API integration
-├── index.html         # Frontend HTML
-├── script.js          # Frontend JavaScript
-├── style.css          # Styling
-├── package.json       # Dependencies and scripts
-├── .env              # Environment variables (API key)
-└── README.md         # This file
+├── 📂 public/               # Frontend assets
+│   ├── index.html          # Main HTML file
+│   ├── style.css           # Main stylesheet
+│   └── app.js              # Frontend JavaScript
+├── 📂 src/                 # Backend source code
+│   ├── app.js              # Express app configuration
+│   ├── api.js              # API routes
+│   ├── cors.js             # CORS configuration
+│   ├── errorHandler.js     # Error handling
+│   └── responseExtractor.js # Response utilities
+├── 📂 config/
+│   └── gemini.js           # Gemini AI configuration
+├── 📂 docs/
+│   └── guide.pdf           # Project documentation
+├── 📄 server.js            # Main server entry point
+├── 📄 package.json         # Dependencies and scripts
+├── 📄 .env                 # Environment variables
+├── 📄 .gitignore          # Git ignore rules
+└── 📄 README.md           # This file
 ```
 
-## API Endpoints
+## 🛠️ Available Scripts
 
-- `GET /` - Serves the main chat interface
-- `POST /api/chat` - Processes chat messages and returns AI responses
+- `npm start` - Start the production server
+- `npm run dev` - Start development server with auto-reload
+- `npm run clean` - Clean node_modules and package-lock
+- `npm run lint` - Run code linting (placeholder)
 
-## Dependencies
+## 🔌 API Endpoints
 
+### Chat API
+- **POST** `/api/chat` - Send message to Gemini AI
+  ```json
+  {
+    "message": "Hello, how are you?"
+  }
+  ```
+
+### Information API
+- **GET** `/api/info` - Get API configuration info
+- **GET** `/api/health` - Health check endpoint
+
+### Static Files
+- **GET** `/` - Main chat interface
+- **GET** `/css/*` - Stylesheets
+- **GET** `/js/*` - JavaScript files
+
+## 🎨 UI Features
+
+- **Modern Design**: Clean, professional interface
+- **Teal Theme**: Consistent teal color scheme
+- **Message Bubbles**: WhatsApp/Telegram style messages
+- **Typing Indicators**: Animated typing dots
+- **Timestamps**: Message time display
+- **Responsive**: Works on desktop and mobile
+- **Accessibility**: Proper focus management
+
+## 🔧 Technical Features
+
+- **Modular Architecture**: Clean separation of concerns
+- **Error Handling**: Comprehensive error management
+- **Input Validation**: Message validation and sanitization
+- **CORS Support**: Configurable cross-origin requests
+- **Environment Config**: Flexible configuration system
+- **Graceful Shutdown**: Proper server lifecycle management
+
+## 🛡️ Security
+
+- **API Key Masking**: Only last 4 characters shown
+- **Input Sanitization**: Message validation
+- **Error Sanitization**: No sensitive data in error responses
+- **CORS Configuration**: Configurable allowed origins
+
+## 📦 Dependencies
+
+### Production
 - `express` - Web server framework
 - `@google/genai` - Google Generative AI SDK
 - `cors` - Cross-origin resource sharing
 - `dotenv` - Environment variable management
+
+### Development
+- Modern ES modules
+- Node.js 18+ recommended
+
+## 🌐 Browser Support
+
+- Chrome/Edge 90+
+- Firefox 88+
+- Safari 14+
+- Mobile browsers
+
+## 📝 License
+
+ISC License - See package.json for details
