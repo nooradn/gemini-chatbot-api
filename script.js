@@ -35,7 +35,7 @@ form.addEventListener('submit', async function (e) {
     chatBox.removeChild(typingMsg);
     
     if (response.ok) {
-      appendMessage('bot', data.response);
+      appendMessage('bot', data.response || data.text);
     } else {
       appendMessage('bot', 'Sorry, I encountered an error: ' + data.error);
     }

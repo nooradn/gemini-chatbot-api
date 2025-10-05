@@ -21,6 +21,7 @@ A simple web-based chatbot powered by Google's Gemini AI API.
    ```
    GEMINI_API_KEY=your_api_key_here
    ```
+   (Your API key is already configured)
 
 3. **Run the application:**
    ```bash
