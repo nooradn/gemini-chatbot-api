@@ -2,6 +2,8 @@
 
 A modern web-based chatbot powered by Google's Gemini AI API.
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ef9954f8-4632-4094-9453-b48b45fc0438" />
+
 ## Features
 
 - Modern messaging interface (WhatsApp/Telegram style)
