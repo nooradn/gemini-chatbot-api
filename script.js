@@ -140,10 +140,24 @@ function getCurrentTime() {
   return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }
 
-// Auto-focus input on page load
-window.addEventListener('load', () => {
+// Auto-focus input on page load and load API info
+window.addEventListener('load', async () => {
   input.focus();
+  await loadApiInfo();
 });
+
+// Load API information
+async function loadApiInfo() {
+  try {
+    const response = await fetch('/api/info');
+    const data = await response.json();
+    
+    document.getElementById('model-name').textContent = data.model;
+    document.getElementById('api-key-display').textContent = data.apiKey;
+  } catch (error) {
+    console.error('Failed to load API info:', error);
+  }
+}
 
 // Handle Enter key
 input.addEventListener('keypress', (e) => {

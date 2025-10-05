@@ -34,6 +34,17 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// API info endpoint
+app.get('/api/info', (req, res) => {
+  const apiKey = process.env.GEMINI_API_KEY;
+  const maskedKey = apiKey ? '••••••••••••' + apiKey.slice(-4) : '••••••••••••';
+  
+  res.json({
+    model: GEMINI_MODEL,
+    apiKey: maskedKey
+  });
+});
+
 // Chat endpoint
 app.post('/api/chat', async (req, res) => {
   try {
