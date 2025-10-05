@@ -2,19 +2,54 @@ const form = document.getElementById('chat-form');
 const input = document.getElementById('user-input');
 const chatBox = document.getElementById('chat-box');
 
-form.addEventListener('submit', function (e) {
+form.addEventListener('submit', async function (e) {
   e.preventDefault();
 
   const userMessage = input.value.trim();
   if (!userMessage) return;
 
+  const submitButton = form.querySelector('button[type="submit"]');
+  
   appendMessage('user', userMessage);
   input.value = '';
+  
+  // Disable form while processing
+  submitButton.disabled = true;
+  input.disabled = true;
 
-  // Simulasi dummy balasan bot (placeholder)
-  setTimeout(() => {
-    appendMessage('bot', 'Gemini is thinking... (this is dummy response)');
-  }, 1000);
+  // Show typing indicator
+  const typingMsg = appendMessage('bot', 'Gemini is thinking...');
+  
+  try {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ message: userMessage }),
+    });
+
+    const data = await response.json();
+    
+    // Remove typing indicator
+    chatBox.removeChild(typingMsg);
+    
+    if (response.ok) {
+      appendMessage('bot', data.response);
+    } else {
+      appendMessage('bot', 'Sorry, I encountered an error: ' + data.error);
+    }
+  } catch (error) {
+    // Remove typing indicator
+    chatBox.removeChild(typingMsg);
+    appendMessage('bot', 'Sorry, I could not connect to the server.');
+    console.error('Error:', error);
+  } finally {
+    // Re-enable form
+    submitButton.disabled = false;
+    input.disabled = false;
+    input.focus();
+  }
 });
 
 function appendMessage(sender, text) {
@@ -23,4 +58,5 @@ function appendMessage(sender, text) {
   msg.textContent = text;
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
+  return msg;
 }
